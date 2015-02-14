@@ -1,0 +1,12 @@
+﻿<xapCache source="F:\Tread\Bin\ARM\Debug\Tread_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="14-Feb-15 5:39:36 PM">
+  <file source="F:\Tread\obj\ARM\Debug\Tread.dll" archivePath="Tread.dll" lastWriteTime="14-Feb-15 5:39:35 PM" />
+  <file source="F:\Tread\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="14-Feb-15 5:39:35 PM" />
+  <file source="F:\Tread\Bin\ARM\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="14-Feb-15 5:39:35 PM" />
+</xapCache>
