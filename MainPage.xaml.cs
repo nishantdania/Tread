@@ -39,10 +39,20 @@ namespace Tread
         public bool isWalking = false;
         private int deltaTimer = 60000;
 
+        public event EventHandler<AccelerometerReadingChangedEventArgs> ReadingChanged;
+        public event EventHandler<PedometerStatus> PedometerStatusChanged;
+        public event EventHandler StepDetected;
+
+        private MainPageViewModel viewModel;
+        private int stepCount = 0;
+        private Utils utils;
+
         // Constructor
         public MainPage()
         {
             InitializeComponent();
+
+            utils = new Utils();
             this._sensor = Accelerometer.GetDefault();
             if (_sensor == null)
             {
@@ -55,15 +65,8 @@ namespace Tread
                 mScale[0] = -(h * 0.5f * (1.0f / (STANDARD_GRAVITY * 2)));
                 mScale[1] = -(h * 0.5f * (1.0f / (MAGNETIC_FIELD_EARTH_MAX)));
             }
-            viewModel = new MainPageViewModel();
-            this.DataContext = viewModel;
-            viewModel.CounterText = "0";
-            Start();
         }
-
-        public event EventHandler<AccelerometerReadingChangedEventArgs> ReadingChanged;
-        public event EventHandler<PedometerStatus> PedometerStatusChanged;
-        public event EventHandler StepDetected;
+        
         private void _sensor_ReadingChanged(Accelerometer sender, AccelerometerReadingChangedEventArgs args)
         {
             if (this.ReadingChanged != null) ReadingChanged(_sensor, args);
@@ -98,10 +101,7 @@ namespace Tread
                     {
                         Debug.WriteLine("STEP UP");
                         stepCount++;
-                        Dispatcher.BeginInvoke(() =>
-                        {
-                            viewModel.CounterText = stepCount.ToString();
-                        });
+                        UpdateUI();
                         TimeSpan ts = DateTime.Now - lastStepStamp;
                         if (ts.TotalMilliseconds > 1500) stepsInaRow = 0;
 
@@ -152,6 +152,28 @@ namespace Tread
             }
         }
 
+        private void UpdateUI()
+        {
+            Dispatcher.BeginInvoke(() =>
+            {
+                viewModel.CounterText = stepCount.ToString();
+                viewModel.Distance = utils.GetDistance() ;
+                viewModel.Speed = utils.GetSpeed();
+                viewModel.Calories = utils.GetCalories();
+            });
+        }
+
+        private void InitializeUI()
+        {
+            Dispatcher.BeginInvoke(() =>
+            {
+                viewModel.CounterText = "0";
+                viewModel.Distance = "0";
+                viewModel.Speed = "0";
+                viewModel.Calories = "0";
+            });
+        }
+
         internal void Start()
         {
             if (this._sensor != null) this._sensor.ReadingChanged += _sensor_ReadingChanged;
@@ -160,11 +182,14 @@ namespace Tread
         {
             if (this._sensor != null) this._sensor.ReadingChanged -= _sensor_ReadingChanged;
         }
-        private MainPageViewModel viewModel;
-        private int stepCount = 0;
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
+            viewModel = new MainPageViewModel();
+            this.DataContext = viewModel;
+            viewModel.CounterText = "0";
+            Start();
+            InitializeUI();
         }
     }
 }
