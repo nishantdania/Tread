@@ -25,6 +25,8 @@ namespace Tread
 
         private readonly Accelerometer _sensor;
 
+        private Boolean started = false;
+
         double[] mScale = new double[2];
         private double mYOffset;
         private double mLimit = 3;
@@ -46,6 +48,10 @@ namespace Tread
         private MainPageViewModel viewModel;
         private int stepCount = 0;
         private Utils utils;
+
+        private double rDist = 0;
+        private double rSpeed = 0;
+        private double rCal = 0;
 
         // Constructor
         public MainPage()
@@ -154,12 +160,14 @@ namespace Tread
 
         private void UpdateUI()
         {
+            utils.steps = stepCount;
             Dispatcher.BeginInvoke(() =>
             {
                 viewModel.CounterText = stepCount.ToString();
                 viewModel.Distance = utils.GetDistance() ;
                 viewModel.Speed = utils.GetSpeed();
                 viewModel.Calories = utils.GetCalories();
+                viewModel.Progress = utils.Progress();
             });
         }
 
@@ -171,6 +179,10 @@ namespace Tread
                 viewModel.Distance = "0";
                 viewModel.Speed = "0";
                 viewModel.Calories = "0";
+                viewModel.Progress = "0";
+                viewModel.RDistance = string.Format("{0:0.00}", rDist);
+                viewModel.RSpeed = string.Format("{0:0.00}", rSpeed);
+                viewModel.RCal = string.Format("{0:0.00}", rCal);
             });
         }
 
@@ -188,8 +200,47 @@ namespace Tread
             viewModel = new MainPageViewModel();
             this.DataContext = viewModel;
             viewModel.CounterText = "0";
-            Start();
+            //Start();
             InitializeUI();
+        }
+
+        private void StackPanel_Tap(object sender, System.Windows.Input.GestureEventArgs e)
+        {
+            if (!started)
+            {
+                utils.InitSW();
+                viewModel.CounterText = "0";
+                InitializeUI();
+                Start();
+                myStoryboard.Begin();
+                started = true;
+            }
+            else
+            {
+                if (rDist < utils.distance)
+                {
+                    rDist = utils.distance;
+                    viewModel.RDistance = string.Format("{0:0.00}", rDist);
+                }
+                if (rSpeed < utils.speed)
+                {
+                    rSpeed = utils.speed;
+                    viewModel.RSpeed = string.Format("{0:0.00}", rSpeed);
+                }
+                if (rCal < utils.calories)
+                {
+                    rCal = utils.calories;
+                    viewModel.RCal = string.Format("{0:0.00}", rCal);
+                }
+                utils.StopSW();
+                Stop();
+                utils.Reset();
+                stepCount = 0;
+                //viewModel.CounterText = "0";
+                //InitializeUI();
+                myStoryboard.Stop();
+                started = false;
+            }
         }
     }
 }

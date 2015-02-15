@@ -25,6 +25,20 @@
         </shell:ApplicationBar>
     </phone:PhoneApplicationPage.ApplicationBar>
 
+    <phone:PhoneApplicationPage.Resources>
+        <!-- Storyboard resource: Animates a rectangle's opacity. -->
+        <Storyboard x:Name="myStoryboard">
+            <DoubleAnimation
+              Storyboard.TargetName="Circle"
+              Storyboard.TargetProperty="Opacity"
+              From="1.0" To="0.2" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+            <DoubleAnimation 
+              Storyboard.TargetName="Progress"
+                Storyboard.TargetProperty="Opacity"
+                From="0.5" To="1" Duration="0:0:1" AutoReverse="True" RepeatBehavior="Forever"/>
+        </Storyboard>
+    </phone:PhoneApplicationPage.Resources>
+        
     <!--LayoutRoot is the root grid where all page content is placed-->
     <Grid x:Name="LayoutRoot" Background="#FF222222">
         <Grid.RowDefinitions>
@@ -58,8 +72,12 @@
         <Grid x:Name="ContentPanel" Grid.RowSpan="2">
             <Image Source="Assets/Logo.png" Margin="0,27,0,655"></Image>
             <!--<TextBlock x:Name="Counter" Foreground="White" Text="{Binding CounterText}" Margin="10,41,145,436" FontSize="28" />-->
-            <StackPanel Margin="0,302,0,391">
-                <TextBlock x:Name="Counter" Text="{Binding CounterText}" Margin="0,0,0,454" Width="480" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Segoe UI" FontWeight="Thin"/>
+            <StackPanel Margin="0,78,0,391" Tap="StackPanel_Tap">
+                <Canvas Height="226">
+                    <TextBlock Canvas.ZIndex="200" x:Name="Progress" Text="{Binding Progress}" Canvas.Left="138" Canvas.Top="62" Height="114" Width="208" TextAlignment="Center" FontSize="72" Foreground="#FFFFFFFF"></TextBlock>
+                    <Image x:Name="Circle"  Canvas.ZIndex="100" Source="Assets/circle.png" Height="213" Canvas.Left="138" Canvas.Top="10"/>
+                </Canvas>
+                <TextBlock x:Name="Counter" Text="{Binding CounterText}" Margin="0,0,0,454" Width="480" HorizontalAlignment="Center" VerticalAlignment="Top" TextAlignment="Center" FontFamily="Segoe UI" FontWeight="Thin" Height="34"/>
             </StackPanel>
             <StackPanel Margin="0,337,0,241">
                 <TextBlock Text="This Session :" FontFamily="Segoe UI" FontWeight="Thin" FontSize="36" Margin="12,0" Foreground="#FFCDCDCD"></TextBlock>
@@ -79,11 +97,11 @@
                 <TextBlock Text="Personal Records :" FontFamily="Segoe UI" FontWeight="Thin" FontSize="36" Margin="12,0" Foreground="#FFCDCDCD"/>
                 <Canvas>
                     <TextBlock Canvas.ZIndex="100" Text="Distance :" FontSize="28" FontWeight="Thin" Margin="12,11,12,0" Foreground="#FF222222"></TextBlock>
-                    <TextBlock Canvas.ZIndex="100" Text="24km" FontSize="36" FontWeight="Bold" Margin="12,43,12,0" Foreground="#FF222222"></TextBlock>
+                    <TextBlock Canvas.ZIndex="100" x:Name="RDistance" Text="{Binding RDistance}" FontSize="36" FontWeight="Bold" Margin="12,43,12,0" Foreground="#FF222222"></TextBlock>
                     <TextBlock Canvas.ZIndex="100" Text="Speed :" FontSize="28" FontWeight="Thin" Margin="184,11,12,0" Foreground="#FF222222"></TextBlock>
-                    <TextBlock Canvas.ZIndex="100" Text="3m/s" FontSize="36" FontWeight="Bold" Margin="184,43,12,0" Foreground="#FF222222"></TextBlock>
+                    <TextBlock Canvas.ZIndex="100" x:Name="RSpeed" Text="{Binding RSpeed}" FontSize="36" FontWeight="Bold" Margin="184,43,12,0" Foreground="#FF222222"></TextBlock>
                     <TextBlock Canvas.ZIndex="100" Text="Calories :" FontSize="28" FontWeight="Thin" Margin="354,11,12,0" Foreground="#FF222222"/>
-                    <TextBlock Canvas.ZIndex="100" Text="345cal" FontSize="36" FontWeight="Bold" Foreground="#FF222222" HorizontalAlignment="Right" Width="461" TextAlignment="Right" Margin="0,43,0,0"/>
+                    <TextBlock Canvas.ZIndex="100" x:Name="RCal" Text="{Binding RCal}" FontSize="36" FontWeight="Bold" Foreground="#FF222222" HorizontalAlignment="Right" Width="461" TextAlignment="Right" Margin="0,43,0,0"/>
                     <Rectangle Canvas.ZIndex="1" Fill="#FFCDCDCD" HorizontalAlignment="Center" Height="120" VerticalAlignment="Center" Width="480" Margin="0,0,0,0"/>
                 </Canvas>
             </StackPanel>

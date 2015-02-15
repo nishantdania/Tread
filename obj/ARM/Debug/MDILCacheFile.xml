@@ -1,13 +1,14 @@
-﻿<xapCache source="F:\Tread\Bin\ARM\Debug\Tread_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="15-Feb-15 3:52:53 AM">
-  <file source="F:\Tread\obj\ARM\Debug\Tread.dll" archivePath="Tread.dll" lastWriteTime="15-Feb-15 3:52:52 AM" />
+﻿<xapCache source="F:\Tread\Bin\ARM\Debug\Tread_Debug_ARM.xap" wasSigned="False" wasTritonized="False" certificateThumbprint="" TimeStampUrl="" signKeyFile="" signKeyPassword="" lastWriteTime="15-Feb-15 12:54:38 PM">
+  <file source="F:\Tread\obj\ARM\Debug\Tread.dll" archivePath="Tread.dll" lastWriteTime="15-Feb-15 12:54:37 PM" />
   <file source="F:\Tread\Assets\AlignmentGrid.png" archivePath="Assets\AlignmentGrid.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
+  <file source="F:\Tread\Assets\circle.png" archivePath="Assets\circle.png" lastWriteTime="15-Feb-15 11:29:04 AM" />
   <file source="F:\Tread\Assets\Logo.png" archivePath="Assets\Logo.png" lastWriteTime="15-Feb-15 12:53:57 AM" />
   <file source="F:\Tread\Assets\Tiles\FlipCycleTileLarge.png" archivePath="Assets\Tiles\FlipCycleTileLarge.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
   <file source="F:\Tread\Assets\Tiles\FlipCycleTileSmall.png" archivePath="Assets\Tiles\FlipCycleTileSmall.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
   <file source="F:\Tread\Assets\Tiles\IconicTileMediumLarge.png" archivePath="Assets\Tiles\IconicTileMediumLarge.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
   <file source="F:\Tread\Assets\Tiles\IconicTileSmall.png" archivePath="Assets\Tiles\IconicTileSmall.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
-  <file source="F:\Tread\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="15-Feb-15 3:41:43 AM" />
+  <file source="F:\Tread\Bin\ARM\Debug\AppManifest.xaml" archivePath="AppManifest.xaml" lastWriteTime="15-Feb-15 12:36:59 PM" />
   <file source="F:\Tread\Bin\ARM\Debug\Assets\ApplicationIcon.png" archivePath="Assets\ApplicationIcon.png" lastWriteTime="15-Feb-15 3:08:08 AM" />
   <file source="F:\Tread\Bin\ARM\Debug\Assets\Tiles\FlipCycleTileMedium.png" archivePath="Assets\Tiles\FlipCycleTileMedium.png" lastWriteTime="14-Feb-15 4:26:12 AM" />
-  <file source="F:\Tread\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="15-Feb-15 3:41:43 AM" />
+  <file source="F:\Tread\Bin\ARM\Debug\Properties\WMAppManifest.xml" archivePath="WMAppManifest.xml" lastWriteTime="15-Feb-15 12:36:59 PM" />
 </xapCache>
